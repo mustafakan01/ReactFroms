@@ -8,38 +8,33 @@ import TaskList from "./Component/TaskList";
 import { useState } from "react";
 
 function App() {
-  // const [count, setCount] = useState(0)
-
   const [tasks, setTasks] = useState([]);
-
   const createTask = (title, taskDesc) => {
     const createdTasks = [
       ...tasks,
       {
-        id: Math.round(Math.random() * 9999999),
+        id: Math.round(Math.random() * 999999),
         title,
         taskDesc,
       },
     ];
-
     setTasks(createdTasks);
   };
 
   const deleteTaskById = (id) => {
-    const afterDeletingTask = tasks.filter((tasks) => {
-      return tasks.id !== id;
+    const afterDeletingTasks = tasks.filter((task) => {
+      return task.id !== id;
     });
-    setTasks(afterDeletingTask);
+    setTasks(afterDeletingTasks);
   };
-  const editTaskById = (id,updatedTitle,updatedTaskDesc) => {
-    // eslint-disable-next-line no-unused-vars
-    const updatedTask = tasks.map((task) => {
-      if (task.id==id) {
-        return {id, title: updatedTitle, taskDesc: updatedTaskDesc};
+  const editTaskById = (id, updatedTitle, updatedTaskDesc) => {
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return { id, title: updatedTitle, taskDesc: updatedTaskDesc };
       }
-      return tasks;
+      return task;
     });
-    setTasks(updatedTask);
+    setTasks(updatedTasks);
   };
   return (
     <div className="App">
